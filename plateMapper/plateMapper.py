@@ -7,8 +7,6 @@ def read_scan(scan_fn):
     f = open(scan_fn, 'r')
     while True:
         yield next(f).strip('\r\n').split(',')
-
-
 def main():
     markerLookup = {
     'P10':['AS7','PfPK2'],
