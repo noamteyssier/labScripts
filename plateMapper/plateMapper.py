@@ -24,8 +24,8 @@ def main():
     }
 
     p = argparse.ArgumentParser()
-    p.add_argument('-i', '--input', help='scan file to populate platemaps')
-    p.add_argument('-o', '--basename', help='basename of output files')
+    p.add_argument('-i', '--input', help='scan file to populate platemaps', required=True)
+    p.add_argument('-o', '--basename', help='basename of output files', required=True)
     a = p.parse_args()
 
     # iterate through plate numbers
