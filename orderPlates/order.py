@@ -5,6 +5,7 @@ import selenium
 import time
 import argparse
 import os
+import getpass
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -15,11 +16,11 @@ def open_browser():
     browser.get('http://www.quintarabio.com/user/myqb?id=15805')
     return browser
 
-def login_to_MyQuintaraBio(browser):
+def login_to_MyQuintaraBio(browser, password):
     login = browser.find_element_by_name('login')
     login.send_keys('Anna.Chen@ucsf.edu')
     password = browser.find_element_by_name('password')
-    password.send_keys('greenhouse' + Keys.RETURN)
+    password.send_keys(password + Keys.RETURN)
 
 def new_excel_file_upload(browser):
     new_form = browser.find_element_by_link_text("Excel File Upload")
@@ -71,6 +72,8 @@ def __main__():
     parser.add_argument('-n', '--numPlates', help = 'Number of plates to order (default is 12)', required=False)
     args = parser.parse_args()
 
+    password = getpass.getpass()
+
     ## assign values ##
     sample_name = args.output
     date = args.date
@@ -92,7 +95,7 @@ def __main__():
 
     ## Open Browser and Login to MyQuintara ##
     br = open_browser()
-    login_to_MyQuintaraBio(br)
+    login_to_MyQuintaraBio(br, password)
 
     ## Make the CE Plate Orders for Plates 1-12 ##
     for i in range(1, 1 + numPlates):
