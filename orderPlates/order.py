@@ -17,10 +17,11 @@ def open_browser():
     return browser
 
 def login_to_MyQuintaraBio(browser, password):
-    login = browser.find_element_by_name('login')
-    login.send_keys('Anna.Chen@ucsf.edu')
-    password = browser.find_element_by_name('password')
-    password.send_keys(password + Keys.RETURN)
+    # write user
+    browser.find_element_by_name('login').send_keys('Anna.Chen@ucsf.edu')
+
+    # write password
+    browser.find_element_by_name('password').send_keys(password + Keys.RETURN)
 
 def new_excel_file_upload(browser):
     new_form = browser.find_element_by_link_text("Excel File Upload")
@@ -82,7 +83,7 @@ def __main__():
     excel_name = os.path.abspath('/'.join([path ,'Quintara_Seq_OrderForm_row.xlsx']))
 
     if sample_name == None:
-        sample_name = str(raw_input("Sample Name?\n>"))
+        sample_name = input("Sample Name?\n>")
 
     if args.numPlates:
         numPlates = int(args.numPlates)
