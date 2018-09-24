@@ -6,7 +6,9 @@ def read_scan(scan_fn):
     """yield position and barcode"""
     f = open(scan_fn, 'r')
     while True:
-        yield next(f).strip('\r\n').split(',')
+        line = next(f).strip('\r\n').split(',')
+        if 'Well' not in line:
+            yield line
 def main():
     markerLookup = {
     'P10':['AS7','PfPK2'],
