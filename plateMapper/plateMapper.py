@@ -22,7 +22,7 @@ def main():
     'P6':['TA60','PFG377'],
     'P7':['AS19','Ara2','AS21'],
     'P8':['AS8','AS15'],
-    'P9':['B7M19','AS2','AS25']
+    'P9':['B7M19','AS3','AS25']
     }
 
     p = argparse.ArgumentParser()
